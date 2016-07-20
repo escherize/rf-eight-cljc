@@ -4,7 +4,10 @@
                  [reagent "0.6.0-rc"]
                  [binaryage/devtools "0.7.2"]
                  [re-frame "0.8.0-alpha2"]
-                 ]
+                 [cljs-ajax "0.5.8"]
+                 [compojure "1.5.1"]
+                 [cheshire "5.6.3"]
+                 [byte-streams "0.2.2"]]
 
   :plugins [[lein-cljsbuild "1.1.3"]]
 
@@ -19,7 +22,8 @@
              ;; Load CIDER, refactor-nrepl and piggieback middleware
              :nrepl-middleware ["cider.nrepl/cider-middleware"
                                 "refactor-nrepl.middleware/wrap-refactor"
-                                "cemerick.piggieback/wrap-cljs-repl"]}
+                                "cemerick.piggieback/wrap-cljs-repl"]
+             :ring-handler rf-eight-cljc.core/handler}
 
   :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
