@@ -1,3 +1,3 @@
 (ns rf-eight-cljc.db)
 
-(def default-db {:name "re-frame"})
+(def default-db {:name "a" :seen []})

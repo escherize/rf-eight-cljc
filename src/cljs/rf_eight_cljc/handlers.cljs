@@ -31,6 +31,9 @@
   (fn [db [_ seen]]
     (assoc db :seen seen)))
 
+;; Output of submit-name will make :name = the count of 'seen',
+;; and add the submitted-name into 'seen'.
+
 (re-frame/def-event-fx
   :submit-name
   re-frame/debug

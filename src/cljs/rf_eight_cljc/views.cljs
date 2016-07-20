@@ -17,4 +17,4 @@
          {:type "button"
           :on-click #(re-frame/dispatch [:submit-name])}
          "Submit"]]
-       [:pre (pr-str @seen)]])))
+       (into [:ol] (for [s @seen] [:li s]))])))
