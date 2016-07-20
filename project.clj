@@ -36,9 +36,19 @@
               [cider/cider-nrepl "0.13.0-SNAPSHOT"]]
     }}
 
+  :test-paths     ["test"]
+
   :cljsbuild
   {:builds
-   [{:id           "dev"
+   [{:id           "test"
+     :source-paths ["test" "src"]
+     :compiler     {:output-to     "run/compiled/browser/test.js"
+                    :source-map    true
+                    :output-dir    "run/compiled/browser/test"
+                    :optimizations :none
+                    :source-map-timestamp true
+                    :pretty-print  true}}
+    {:id           "dev"
      :source-paths ["src/cljs"]
      :figwheel     {:on-jsload "rf-eight-cljc.core/mount-root"}
      :compiler     {:main                 rf-eight-cljc.core
@@ -57,5 +67,8 @@
                     :pretty-print    false}}
 
     ]}
+
+  :aliases {"test-once"
+            ["do" "clean," "cljsbuild" "once" "test," "shell" "open" "test/test.html"]}
 
   )
