@@ -1,33 +1,19 @@
 # rf-eight-cljc
 
-A [re-frame](https://github.com/Day8/re-frame) application designed to ... well, that part is up to you.
+A stateful (server + backend) application designed to run tests. exciting.
 
-## Development Mode
+### Run _Tests_:
 
-### Start Cider from Emacs:
-
-Put this in your Emacs config file:
+If you have phantom.js installed:
 
 ```
-(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+lein clean
+lein doo phantom test
 ```
-
-Navigate to a clojurescript file and start a figwheel REPL with `cider-jack-in-clojurescript` or (`C-c M-J`)
 
 ### Run application:
 
 ```
 lein clean
 lein figwheel dev
-```
-
-Figwheel will automatically push cljs changes to the browser.
-
-Wait a bit, then browse to [http://localhost:3449](http://localhost:3449).
-
-## Production Build
-
-```
-lein clean
-lein cljsbuild once min
 ```
