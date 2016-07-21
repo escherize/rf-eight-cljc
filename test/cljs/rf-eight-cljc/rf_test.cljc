@@ -16,7 +16,6 @@
       (reset! app-db prev-app-db)
       test-result)))
 
-
 (t/deftest registering-event
   (rf/def-event :init (fn [_ _] default-test-db))
   (t/is (not (nil? (re-frame.events/lookup-handler :init)))

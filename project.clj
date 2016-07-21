@@ -7,9 +7,11 @@
                  [cljs-ajax "0.5.8"]
                  [compojure "1.5.1"]
                  [cheshire "5.6.3"]
-                 [byte-streams "0.2.2"]]
+                 [byte-streams "0.2.2"]
+                 [lein-doo "0.1.7"]]
 
-  :plugins [[lein-cljsbuild "1.1.3"]]
+  :plugins [[lein-cljsbuild "1.1.3"]
+            [lein-doo "0.1.7"]]
 
   :min-lein-version "2.5.3"
 
@@ -40,15 +42,7 @@
 
   :cljsbuild
   {:builds
-   [{:id           "test"
-     :source-paths ["test" "src"]
-     :compiler     {:output-to     "run/compiled/browser/test.js"
-                    :source-map    true
-                    :output-dir    "run/compiled/browser/test"
-                    :optimizations :none
-                    :source-map-timestamp true
-                    :pretty-print  true}}
-    {:id           "dev"
+   [{:id           "dev"
      :source-paths ["src/cljs"]
      :figwheel     {:on-jsload "rf-eight-cljc.core/mount-root"}
      :compiler     {:main                 rf-eight-cljc.core
@@ -65,6 +59,11 @@
                     :optimizations   :advanced
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
+    {:id           "test"
+     :source-paths ["src/cljs" "test/cljs"]
+     :compiler     {:output-to     "resources/public/js/compiled/test.js"
+                    :main           rf-eight-cljc.runner
+                    :optimizations :none}}
 
     ]}
 
