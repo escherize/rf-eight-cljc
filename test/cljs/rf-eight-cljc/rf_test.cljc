@@ -22,7 +22,7 @@
         "A handler function was assoc'd into id->fn."))
 
 (t/deftest dispatching
-  (rf/dispatch [:init])
+  (rf/dispatch-sync [:init])
   (t/is (= {:a 1} @app-db)))
 
 (t/deftest registering-subscription
@@ -36,8 +36,7 @@
     [(rf/path :local) rf/trim-v]
     (fn [local [k v]] (assoc local k v)))
 
-  (rf/dispatch [:local-set-kv :x 2])
-
+  (rf/dispatch-sync [:local-set-kv :x 2])
   (t/is (= {:a 1, :local {:x 2}} @app-db)))
 
 
